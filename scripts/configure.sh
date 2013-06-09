@@ -6,11 +6,7 @@ sudo apt-get update
 #&& sudo apt-get -y upgrade
 
 # install prerequisite software
-sudo apt-get install -y batctl bridge-utils iw hostapd dnsmasq git-core
-
-# add the batman-adv module to be started on boot
-sudo sed -i '$a batman-adv' /etc/modules
-sudo modprobe batman-adv
+sudo apt-get install -y hostapd dnsmasq git-core
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -48,7 +44,7 @@ sudo cp scripts/conf/dnsmasq.conf /etc/dnsmasq.conf
 # CREATE STARTUP SCRIPT
 #
 # copy startup script to init.d
-# subnodes script configures and starts access point, mesh point, and chat application on boot
+# subnodes script configures and starts access point and chat application on boot
 sudo cp scripts/subnodes.sh /etc/init.d/subnodes
 sudo chmod 755 /etc/init.d/subnodes
 sudo update-rc.d subnodes defaults
