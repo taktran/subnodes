@@ -20,22 +20,6 @@ lines_to_comment_out = [
     "iface default",
 ]
 
-# certain lines need inserting
-if_lines = [
-    "",
-    "iface ap0 inet static",
-    "  address 10.0.0.1",
-    "  netmask 255.255.255.0",
-    "",
-    "auto br0",
-    "iface br0 inet static",
-    "  bridge_ports none",
-    "  bridge_stp off",
-    "  address 192.168.3.1",
-    "  netmask 255.255.255.0",
-    "",
-]
-
 editing_wlan0 = False
 for line in interface_lines:
 
@@ -51,7 +35,7 @@ for line in interface_lines:
             line = None
         else:
             editing_wlan0 = False
-    
+
     # add the line to the output list
     if line is not None:
         output_lines.append(line.rstrip())
