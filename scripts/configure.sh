@@ -6,7 +6,7 @@ sudo apt-get update
 #&& sudo apt-get -y upgrade
 
 # install prerequisite software
-sudo apt-get install -y hostapd dnsmasq git-core
+sudo apt-get install -y hostapd dnsmasq
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -18,7 +18,7 @@ wget http://nodejs.org/dist/v0.9.9/node-v0.9.9-linux-arm-pi.tar.gz
 sudo tar xzvf node-v0.9.9-linux-arm-pi.tar.gz --strip=1
 
 # go back to our subnodes directory
-cd /home/pi/www/subnodes/
+cd ~/www/subnodes/
 
 # download subnodes app dependencies
 sudo npm install
@@ -29,23 +29,23 @@ sudo npm install -g nodemon
 # NETWORK CONFIGURATION
 #
 # modify the network interface config file
-sudo python scripts/configure_network_interfaces.py
+sudo python ~/www/subnodes/scripts/configure_network_interfaces.py
 
 # copy in our hostapd configuration file
-sudo cp scripts/conf/hostapd.conf /etc/hostapd/hostapd.conf
+sudo cp ~/www/subnodes/scripts/conf/hostapd.conf /etc/hostapd/hostapd.conf
 
 # copy in our hostapd init script
-sudo cp scripts/conf/hostapd /etc/default/hostapd
+sudo cp ~/www/subnodes/scripts/conf/hostapd /etc/default/hostapd
 
 # copy in our dnsmasq configuration file
-sudo cp scripts/conf/dnsmasq.conf /etc/dnsmasq.conf
+sudo cp ~/www/subnodes/scripts/conf/dnsmasq.conf /etc/dnsmasq.conf
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # CREATE STARTUP SCRIPT
 #
 # copy startup script to init.d
 # subnodes script configures and starts access point and chat application on boot
-sudo cp scripts/subnodes.sh /etc/init.d/subnodes
+sudo cp ~/www/subnodes/scripts/subnodes.sh /etc/init.d/subnodes
 sudo chmod 755 /etc/init.d/subnodes
 sudo update-rc.d subnodes defaults
 
